@@ -10,9 +10,21 @@ pie_data = [
     {"company": "Company Z", "market_share": 0.15}
 ]
 
-print("----------------")
-print("GENERATING PIE CHART...")
-print(pie_data) # TODO: create a pie chart based on the pie_data
+import matplotlib.pyplot as plt
+
+# Pie chart, where the slices will be ordered and plotted counter-clockwise:
+labels = []
+sizes = []
+
+for p in pie_data:
+    labels.append("company")
+    sizes.append(float("market_share"))
+
+fig1, ax1 = plt.subplots()
+ax1.pie(sizes=sizes, labels=labels, autopct='%1.1f%%', shadow=True, startangle=90)
+ax1.axis("equal")  # Equal aspect ratio ensures that pie is drawn as a circle.
+
+plt.show() # need to explicitly "show" the chart window
 
 #
 # CHART 2 (LINE)
@@ -29,9 +41,27 @@ line_data = [
     {"date": "2019-01-08", "stock_price_usd": 162.62},
 ]
 
-print("----------------")
-print("GENERATING LINE GRAPH...")
-print(line_data) # TODO: create a line graph based on the line_data
+import matplotlib.pyplot as plt
+
+x = []
+y = []
+
+for d in line_data:
+    x.append(d["date"])
+    y.append(d["stock_price_usd"])
+
+plt.plot(x,y)
+
+# Labeling the X-axis 
+plt.xlabel('Date') 
+
+# Labeling the Y-axis 
+plt.ylabel('Stock Prices (USD)') 
+
+# Give a title to the graph
+plt.title('Daily Stock Prices') 
+
+plt.show()
 
 #
 # CHART 3 (HORIZONTAL BAR)
@@ -50,3 +80,4 @@ bar_data = [
 print("----------------")
 print("GENERATING BAR CHART...")
 print(bar_data) # TODO: create a horizontal bar chart based on the bar_data
+
